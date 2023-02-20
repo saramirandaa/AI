@@ -1,5 +1,12 @@
 #Importacion del grafo desde csv
 import csv
+from matplotlib import pyplot as plt
+from matplotlib import image as mpimg
+ 
+plt.title("Graph Image")
+image = mpimg.imread("graph.png")
+plt.imshow(image)
+plt.show()
 
 matrix = []
 nodes = []
@@ -13,16 +20,15 @@ with open('matrix.csv', 'r', encoding='utf-8-sig') as csvfile:
         A = [int(x) for x in cStr2]
         matrix.append(A)
         del cStr2, A
-
 #los valores de los nodos se pasan a un string
 with open('nodes.csv', 'r', encoding='utf-8-sig') as csvfile:
     reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
     for row in reader: 
-        nodes.append(row)
-        
+        nodes.append(row)  
 #se convierte de string a lista
 nodesStr = "".join(nodes[0])
 nodes = nodesStr.split(',')
+
 
 #clase grafo en donde se pasa como parametros los nodos y la matriz
 class graph:
@@ -56,10 +62,30 @@ class graph:
     def get_tuples_weights(self):
         self.get_Tuples()
         return self.nodes_and_weigths
+ 
+
+class graph_Search_methods():
+    def __init__(self, nodes, tree):
+        self.__nodes = nodes
+        self.__tree = tree
+    def Depth_Search(self):
+        pass
+    def Depth_Limited(self):
+        pass
+    def Breadth_search(self):
+        pass
+    def Djstra_search(self):
+        pass
+    def Binary_Search(self):
+        pass
+
+def Search_Menu():
+    print("\n\tWelcome to the Graph Search program")
+    print("Choose the type of search you would like to implement in your graph:\n")
+    print("1. Breadth Search\n2. Depth Search\n3. Depth Limited Search\n4. Dijkstra Search\n5. Binary Search")
     
 def main():
-    
-    g = graph(nodes, matrix)
-    print(g.get_Tuples())
+    #g = graph(nodes, matrix)
+    Search_Menu()
     
 main()
