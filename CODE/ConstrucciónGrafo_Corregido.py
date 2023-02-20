@@ -79,6 +79,7 @@ graph=[
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ]
 
+available_nodes_names = ['Cancun', 'Valladolid', 'Felipe Carrillo Puerto', 'Campeche', 'Merida', 'Chetumal', 'Francisco Escarcega', 'Ciudad del Carmen', 'Villahermosa', 'Tuxtla', 'Acayucan', 'Tehuantepec', 'Alvarado', 'Oaxaca', 'Tehuacan', 'Puerto Angel', 'Pinotepa Nacional', 'Acapulco', 'Chilpancingo', 'Iguala', 'Izucar de Matamoros', 'Puebla', 'Cordoba', 'Veracruz', 'Cuernavaca', 'Ciudad de Mexico', 'Pachuca de Soto', 'Tuxpan de Rodriguez Cano', 'Queretaro', 'Tlaxcala', 'Toluca de Lerdo', 'Ciudad Altamirano', 'Playa Azul', 'Salamanca', 'Morelia', 'Colima', 'Manzanillo', 'Guadalajara', 'Guanajuato', 'Aguascalientes', 'San Luis Potosi', 'Zacatecas', 'Tepic', 'Mazatlan', 'Durango', 'Tampico', 'Ciudad Victoria', 'Soto la Marina', 'Matamoros', 'Reynosa', 'Nuevo Laredo', 'Monterrey', 'Piedras Negras', 'Monclova', 'Torreon', 'Culiacan', 'Hidalgo del Parral', 'Topolobampo', 'Ciudad Obregon', 'Guaymas', 'Hermosillo', 'Chihuahua', 'Ojinaga', 'Juarez', 'Janos', 'Agua Prieta', 'Santa Ana', 'Mexicali', 'Tijuana', 'Ensenada', 'San Felipe', 'San Quintin', 'Santa Rosalia', 'Santo Domingo', 'La Paz', 'Cabo San Lucas', 'Zihuatanejo', 'Atlacomulco']
 
 
 def generate_states(graph):
@@ -95,3 +96,24 @@ def generate_states(graph):
         if len(connections_and_weights) != 0:
             nodes_connection_weights.append([available_nodes_names[matrix_row_index], connections_and_weights])
     return nodes_tuples
+
+class graph:
+    def __init__(self, nodes, graph):
+        self.nodes = nodes
+        self.graph = graph
+       
+    def get_Connections(self):
+        formed_nodes = []
+        nodes_and_weigths = []
+        self.conns_nodes_weights = []
+        for y in range(len(self.graph)):
+            for x in range(len(self.graph[0])):
+                if self.graph[y][x] != 0:
+                    formed_nodes.append([self.nodes[y], self.nodes[x]])
+                    nodes_and_weigths.append([formed_nodes[y], self.graph[y],[x]])
+            
+            if len(nodes_and_weigths) != 0:
+                self.conns_nodes_weights.append([formed_nodes[y], nodes_and_weigths])
+        return formed_nodes
+    
+    
