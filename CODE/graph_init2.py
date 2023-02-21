@@ -1,12 +1,12 @@
 #Importacion del grafo desde csv
 import csv
-from matplotlib import pyplot as plt
-from matplotlib import image as mpimg
+# from matplotlib import pyplot as plt
+# from matplotlib import image as mpimg
  
-plt.title("Graph Image")
-image = mpimg.imread("graph.png")
-plt.imshow(image)
-plt.show()
+# plt.title("Graph Image")
+# image = mpimg.imread("graph.png")
+# plt.imshow(image)
+# plt.show()
 
 matrix = []
 nodes = []
@@ -89,8 +89,6 @@ class graph_Search_methods():
 
 def Search_Menu():
     print("\n\tWelcome to the Graph Search program\n")
-    print("Choose the parameter you would like to fill for the graph's search':\n")
-    print("1. Start Point\n2. End Point\n3. Limit\n4. Dijkstra Search\n5. Binary Search")
     
 def main():
     g = graph(nodes, matrix)
