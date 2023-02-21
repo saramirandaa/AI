@@ -42,7 +42,6 @@ class graph:
         formed_nodes = []
         self.weights = []
         self.nodes_and_weigths = []
-        self.nodes_and_weights_graph2 = []
         #un for con la longitud de la longitud en y de nuestra matriz
         for y in range(len(self.graph)):
             for x in range(len(self.graph[0])):
@@ -51,9 +50,7 @@ class graph:
                     formed_nodes.append([self.nodes[y], self.nodes[x]])
                     self.weights.append(self.graph[y][x])
                     #Aquí se hace una lista con los nodos y su peso
-                    self.nodes_and_weigths.append([formed_nodes[y], self.graph[y][x]])
-                    #Este es el grafo_2 con pesos iguales
-                    self.nodes_and_weights_graph2.append([formed_nodes[y], 5])
+                    self.nodes_and_weigths.append([formed_nodes[y], self.graph[y][x]])   
         return formed_nodes
     
     #metodo que regresa solo los pesos
@@ -65,36 +62,29 @@ class graph:
     def get_tuples_weights(self):
         self.get_Tuples()
         return self.nodes_and_weigths
-    
-    #Este método regresa el grafos con pesos iguales
-    # def get_graph_2(self):
-    #     self.get_Tuples()
-    #     return self.nodes_and_weights_graph2
  
 
-class graph_Search_methods():
-    def __init__(self, nodes, tree):
-        self.__nodes = nodes
-        self.__tree = tree
-    def Depth_Search(self):
-        pass
-    def Depth_Limited(self):
-        pass
-    def Breadth_search(self):
-        pass
-    def Djstra_search(self):
-        pass
-    def Binary_Search(self):
-        pass
+#Breadth First Search -> FIFO queue
+def Bidirectional_search(tree, start, end):
+    pass
 
-def Search_Menu():
-    print("\n\tWelcome to the Graph Search program\n")
-    print("Choose the parameter you would like to fill for the graph's search':\n")
-    print("1. Start Point\n2. End Point\n3. Limit\n4. Dijkstra Search\n5. Binary Search")
+def Breadth_Search(tree, start, end):
+    queue = []
+    current_node = start
+    while tree:
+        queue = tree.pop(0)
+        if current_node == end:
+            return queue
+        node_childs = [node_tuple[1] for node_tuple in tree if node_tuple[0] == current_node]
+        print('node_childs', node_childs)
+        
+
+
     
 def main():
     g = graph(nodes, matrix)
-    print(g.get_tuples_weights())
-    Search_Menu()
+    print(len(g.get_Tuples()))
+    Breadth_Search(g.get_Tuples(), "Cancun", "Valladolid")
+    
     
 main()

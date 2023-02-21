@@ -67,9 +67,9 @@ class graph:
         return self.nodes_and_weigths
     
     #Este método regresa el grafos con pesos iguales
-    # def get_graph_2(self):
-    #     self.get_Tuples()
-    #     return self.nodes_and_weights_graph2
+    def get_graph_2(self):
+        self.get_Tuples()
+        return self.nodes_and_weights_graph2
  
 
 class graph_Search_methods():
