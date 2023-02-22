@@ -62,8 +62,6 @@ class graph:
     def get_tuples_weights(self):
         self.get_Tuples()
         return self.nodes_and_weigths
-    
- 
 
 class graph_Search_methods():
     def __init__(self, nodes, tree):
@@ -79,6 +77,14 @@ class graph_Search_methods():
         print("===== DIJKSTRA SEARCH =====")
         start = input("Enter the start node: ")
         destiny = input("Enter the destiny node: ")
+
+        #  Verificamos que el nodo inicial y el nodo final existan en el grafo
+        if start not in self.nodes:
+            print("\nERROR . . . The start node does not exist in the graph")
+            return
+        if destiny not in self.nodes:
+            print("\nERROR . . . The destiny node does not exist in the graph")
+            return
         # Inicializamos las variables necesarias para el algoritmo
         nodes = set(self.nodes)
         visited = {start: 0}
