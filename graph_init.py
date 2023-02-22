@@ -72,8 +72,34 @@ class graph_Search_methods():
     
     def Depth_Limited(self):
         pass
-    def Breadth_search(self):
-        pass
+    def Breadth_Search(tree, start, end):
+        
+        nodes_visited = []
+        queue = [[start]]
+
+        while queue:
+            branch = queue.pop(0)
+            current_node = branch[-1]
+            
+            if current_node == end:
+                return branch
+
+            if current_node not in nodes_visited:
+                nodes_visited.append(current_node)
+            
+            node_childs = [node_tuple[1] for node_tuple in tree if node_tuple[0] == current_node]
+            
+            for child in node_childs:
+                if child == end:
+                    branch.append(child)
+                    return branch
+                    
+                if child not in nodes_visited:
+                    new_branch = queue.copy()
+                    new_branch.append(child)
+                    queue.append(new_branch)
+
+        
     def Dijkstra_search(self):
         print("===== DIJKSTRA SEARCH =====")
         start = input("Enter the start node: ") # Nodo inicial
