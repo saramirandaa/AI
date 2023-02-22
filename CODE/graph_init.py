@@ -42,7 +42,6 @@ class graph:
         formed_nodes = []
         self.weights = []
         self.nodes_and_weigths = []
-        self.nodes_and_weights_graph2 = []
         #un for con la longitud de la longitud en y de nuestra matriz
         for y in range(len(self.graph)):
             for x in range(len(self.graph[0])):
@@ -51,9 +50,7 @@ class graph:
                     formed_nodes.append([self.nodes[y], self.nodes[x]])
                     self.weights.append(self.graph[y][x])
                     #Aquí se hace una lista con los nodos y su peso
-                    self.nodes_and_weigths.append([formed_nodes[y], self.graph[y][x]])
-                    #Este es el grafo_2 con pesos iguales
-                    self.nodes_and_weights_graph2.append([formed_nodes[y], 5])
+                    self.nodes_and_weigths.append([formed_nodes[y], self.graph[y][x]])   
         return formed_nodes
     
     #metodo que regresa solo los pesos
@@ -66,10 +63,6 @@ class graph:
         self.get_Tuples()
         return self.nodes_and_weigths
     
-    #Este método regresa el grafos con pesos iguales
-    # def get_graph_2(self):
-    #     self.get_Tuples()
-    #     return self.nodes_and_weights_graph2
  
 
 class graph_Search_methods():
@@ -82,19 +75,72 @@ class graph_Search_methods():
         pass
     def Breadth_search(self):
         pass
-    def Djstra_search(self):
-        pass
+    def Dijkstra_search(self):
+        print("===== DIJKSTRA SEARCH =====")
+        start = input("Enter the start node: ")
+        destiny = input("Enter the destiny node: ")
+        # Inicializamos las variables necesarias para el algoritmo
+        nodes = set(self.nodes)
+        visited = {start: 0}
+        path = {}
+        unvisited = {node: float("inf") for node in nodes}
+        unvisited[start] = 0
+        # Mientras haya nodos por visitar
+        while unvisited:
+            # Seleccionamos el nodo con la menor distancia
+            current_node = min(unvisited, key=unvisited.get)
+            # Marcamos el nodo como visitado
+            visited[current_node] = unvisited[current_node]
+            unvisited.pop(current_node)
+            # Calculamos la distancia de los nodos vecinos al nodo actual
+            for neighbor in self.nodes:
+                if self.graph[self.nodes.index(current_node)][self.nodes.index(neighbor)] != 0:
+                    distance = visited[current_node] + self.graph[self.nodes.index(current_node)][self.nodes.index(neighbor)]
+                    if neighbor not in visited and distance < unvisited[neighbor]:
+                        unvisited[neighbor] = distance
+                        path[neighbor] = current_node
+            # Si el nodo actual es el nodo final, terminamos el algoritmo
+            if current_node == destiny:
+                break
+        #Si no hay un camino
+        if destiny not in path:
+            print("\nERROR . . . There is no path between", start, "and", destiny)
+        else:
+            #Imprimir el camino más corto entre el nodo inicial y el nodo final, Además de los pesos entre cada nodo
+            print("\nThe shortest path between", start, "and", destiny, "is:")
+            print(destiny, end="")
+            current_node = destiny
+            while current_node != start:
+                print(" <--- ", path[current_node], end="")
+                current_node = path[current_node]
+            print("\n ---> The total weight is:", visited[destiny])
+
     def Binary_Search(self):
         pass
 
 def Search_Menu():
-    print("\n\tWelcome to the Graph Search program\n")
-    print("Choose the parameter you would like to fill for the graph's search':\n")
-    print("1. Start Point\n2. End Point\n3. Limit\n4. Dijkstra Search\n5. Binary Search")
+    print("\n\tWelcome to the Graph Search program")
+    print("Choose the type of search you would like to implement in your graph:\n")
+    print("1. Breadth Search\n2. Depth Search\n3. Depth Limited Search\n4. Dijkstra Search\n5. Binary Search")
     
 def main():
     g = graph(nodes, matrix)
-    print(g.get_tuples_weights())
     Search_Menu()
+    option = int(input("Enter the number of the search you want to implement: "))
+    if option == 1:
+        print("Breadth Search")
+    elif option == 2:
+        print("Depth Search")
+    elif option == 3:
+        print("Depth Limited Search")
+    elif option == 4:
+        print("Dijkstra Search")
+        graph_Search_methods.Dijkstra_search(g)
+
+    elif option == 5:
+        print("Binary Search")
+    else:
+        print("Invalid option")
+
     
 main()
