@@ -119,7 +119,7 @@ class graph_Search_methods():
             while current_node != start:
                 print(" <--- ", path[current_node], end="")
                 current_node = path[current_node]
-            print("\n ---> The total weight is:", visited[destiny])
+            print("\n\n ---> The total weight is:", visited[destiny])
 
     def Binary_Search(self):
         pass
