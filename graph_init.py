@@ -75,7 +75,7 @@ class graph_Search_methods():
     def Breadth_search(self):
         pass
     def Dijkstra_search(self):
-        print("===== DIJKSTRA SEARCH =====")
+        print("\n===== DIJKSTRA SEARCH =====")
         start = input("Enter the start node: ") # Nodo inicial
         destiny = input("Enter the destiny node: ") # Nodo final
 
