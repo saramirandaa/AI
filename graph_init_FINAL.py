@@ -94,7 +94,7 @@ class graph_Search_methods():
 
         
     def Dijkstra_search(self):
-        print("===== DIJKSTRA SEARCH =====")
+        print("\n===== DIJKSTRA SEARCH =====")
         start = input("Enter the start node: ") # Nodo inicial
         destiny = input("Enter the destiny node: ") # Nodo final
 
@@ -163,11 +163,12 @@ def main():
     elif option == 4:
         print("Dijkstra Search")
         graph_Search_methods.Dijkstra_search(g)
-
     elif option == 5:
         print("Binary Search")
+
     else:
         print("Invalid option")
+        main()
 
     
 main()
