@@ -1,12 +1,5 @@
 #Importacion del grafo desde csv
 import csv
-from matplotlib import pyplot as plt
-from matplotlib import image as mpimg
- 
-plt.title("Graph Image")
-image = mpimg.imread("graph.png")
-plt.imshow(image)
-plt.show()
 
 matrix = []
 nodes = []
@@ -47,7 +40,7 @@ class graph:
             for x in range(len(self.graph[0])):
                 if self.graph[y][x] != 0:
                     #Aqui se forman las conexiones de cada nodo
-                    formed_nodes.append([self.nodes[y], self.nodes[x]])
+                    formed_nodes.append((self.nodes[y], self.nodes[x]))
                     self.weights.append(self.graph[y][x])
                     #Aquí se hace una lista con los nodos y su peso
                     self.nodes_and_weigths.append([formed_nodes[y], self.graph[y][x]])   
