@@ -144,11 +144,12 @@ def main():
     elif option == 4:
         print("Dijkstra Search")
         graph_Search_methods.Dijkstra_search(g)
-
     elif option == 5:
         print("Binary Search")
+
     else:
         print("Invalid option")
+        main()
 
     
 main()
