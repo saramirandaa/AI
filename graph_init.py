@@ -69,27 +69,6 @@ class graph_Search_methods():
         self.__tree = tree
     def Depth_Search(self):
         print("===== DEPTH SEARCH =====")
-        start_node = input("Enter the start node: ")
-        # Verificamos que el nodo inicial exista en el grafo
-        if start_node not in self.nodes:
-            print("\nERROR . . . The start node does not exist in the graph")
-            return
-        
-        # Inicializamos la lista de visitados y la pila del DFS
-        visited = []
-        stack = [start_node]
- 
-        # Mientras hayan nodos por visitar
-        while stack:
-            # Sacamos el último nodo agregado a la pila
-            node = stack.pop()
-            # Si el nodo no ha sido visitado, lo visitamos y agregamos a su vecinos a la pila
-            if node not in visited:
-                visited.append(node)
-                for neighbor in self.__tree.get_Tuples():
-                    if node == neighbor[0] and neighbor[1] not in visited:
-                        stack.append(neighbor[1])
-        return visited
     
     def Depth_Limited(self):
         pass
