@@ -112,7 +112,7 @@ class graph_Search_methods():
             depth_level_counter += 1
 
     def Breadth_Search(self):
-        print("\t===== BEADTH SEARCH =====")
+        print("\t===== BREADTH SEARCH =====")
         nodes_visited = []
         queue = [[self.__start]]
         
